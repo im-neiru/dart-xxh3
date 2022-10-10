@@ -1,9 +1,9 @@
 cmake_minimum_required(VERSION 3.7 FATAL_ERROR)
-project(xxh_export VERSION 1.0.0 LANGUAGES C)
-add_library(xxh_export SHARED exports.c)
-add_executable(exports.c)
+project(xxh VERSION 1.0.0 LANGUAGES C)
+add_library(xxh SHARED exports.c)
+target_include_directories(xxh PRIVATE xxHash)
 
-set_target_properties(xxh_export PROPERTIES
+set_target_properties(xxh PROPERTIES
     PUBLIC_HEADER exports.h
     VERSION ${PROJECT_VERSION}
     SOVERSION 1
