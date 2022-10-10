@@ -4,16 +4,14 @@ import 'dart:io' show Platform, Directory;
 import 'package:path/path.dart' as path;
 
 ffi.DynamicLibrary loadLibrary() {
-  var libraryPath =
-      path.join(Directory.current.path, 'xxh_export', 'libxxh.so');
+  var libraryPath = path.join(Directory.current.path, "libxxh.so");
 
   if (Platform.isMacOS) {
-    libraryPath =
-        path.join(Directory.current.path, 'xxh_export', 'libxxh.dylib');
+    libraryPath = path.join(Directory.current.path, "libxxh.dylib");
   }
 
   if (Platform.isWindows) {
-    libraryPath = path.join(Directory.current.path, 'xxh_export', 'xxh.dll');
+    libraryPath = path.join(Directory.current.path, "xxh.dll");
   }
 
   return ffi.DynamicLibrary.open(libraryPath);
