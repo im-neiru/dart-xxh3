@@ -1,6 +1,6 @@
 import 'dart:ffi';
 
-import 'package:dart_xxh/src/loader.dart';
+import 'package:dart_xxh/loader.dart';
 
 typedef FnCreateState = Pointer<NativeType> Function();
 typedef Xxh3State = Pointer<NativeType>;
