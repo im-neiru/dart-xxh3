@@ -7,25 +7,26 @@ typedef FnCreateState = Xxh3State Function();
 typedef FnDestroyState = Void Function(Xxh3State);
 
 class Xxh3 {
-  final dylib = loadLibrary();
-  late Xxh3State state;
+  final _dylib = loadLibrary();
+  late Xxh3State _state;
 
   // ignore: unused_field
-  static final Finalizer<Xxh3> _finalizer = Finalizer((xxh3) => xxh3.dispose());
+  static final Finalizer<Xxh3> _finalizer =
+      Finalizer((xxh3) => xxh3._dispose());
 
   Xxh3() {
-    final FnCreateState createState = dylib
+    final FnCreateState createState = _dylib
         .lookup<NativeFunction<FnCreateState>>("create_state")
         .asFunction();
 
-    state = createState();
+    _state = createState();
   }
 
-  void dispose() {
-    final void Function(Xxh3State) destroyState = dylib
+  void _dispose() {
+    final void Function(Xxh3State) destroyState = _dylib
         .lookup<NativeFunction<FnDestroyState>>("destroy_state")
         .asFunction();
 
-    destroyState(state);
+    destroyState(_state);
   }
 }
